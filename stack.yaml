@@ -1,0 +1,16 @@
+snapshot: lts-24.66
+
+packages:
+- .
+
+extra-deps:
+- git: https://github.com/jrclogic/SMCDEL.git
+  commit: e515c3e123342d8fd3d57662ab9c6efedcece07c
+- HasCacBDD-0.4.0.0@sha256:245efb0573f14193488c8baa08a5e1384f76fecfc149deecbbe15427b4d71844,1867
+- decision-diagrams-0.2.0.0@sha256:a973d0e448cb4cb409f93b210bf7f968c893a2152c1e2f81b2e9c922f83f9b76,3423
+
+allow-newer: true
+
+allow-newer-deps:
+- HasCacBDD
+- decision-diagrams

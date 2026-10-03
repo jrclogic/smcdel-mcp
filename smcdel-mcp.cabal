@@ -1,0 +1,107 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.39.6.
+--
+-- see: https://github.com/sol/hpack
+
+name:           smcdel-mcp
+version:        0.1.0.0
+synopsis:       MCP server exposing the SMCDEL model checker
+description:    A Model Context Protocol server that exposes the TRUE?, VALID? and WHERE? queries of SMCDEL as tools over Streamable HTTP or stdio. See README.md.
+category:       Web
+homepage:       https://github.com/jrclogic/smcdel-mcp#readme
+author:         Malvin Gattinger
+maintainer:     malvin@w4eg.eu
+copyright:      2026 Malvin Gattinger
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+library
+  exposed-modules:
+      SMCDEL.MCP.Check
+      SMCDEL.MCP.JsonRpc
+      SMCDEL.MCP.Protocol
+      SMCDEL.MCP.Server
+      SMCDEL.MCP.Stdio
+      SMCDEL.MCP.Tools
+  other-modules:
+      Paths_smcdel_mcp
+  autogen-modules:
+      Paths_smcdel_mcp
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      HasCacBDD >=0.4.0.0 && <0.5
+    , aeson >=2.0 && <2.3
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , http-types
+    , scotty >=0.20 && <0.23
+    , smcdel
+    , text
+    , wai
+    , warp
+  default-language: Haskell2010
+
+executable smcdel-mcp
+  main-is: Main.hs
+  other-modules:
+      Paths_smcdel_mcp
+  autogen-modules:
+      Paths_smcdel_mcp
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HasCacBDD >=0.4.0.0 && <0.5
+    , aeson >=2.0 && <2.3
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , smcdel
+    , smcdel-mcp
+    , text
+  default-language: Haskell2010
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Helpers
+      ProtocolSpec
+      ServerSpec
+      StdioSpec
+      Paths_smcdel_mcp
+  autogen-modules:
+      Paths_smcdel_mcp
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  build-depends:
+      HasCacBDD >=0.4.0.0 && <0.5
+    , aeson >=2.0 && <2.3
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , hspec
+    , http-types
+    , process
+    , scientific
+    , smcdel
+    , smcdel-mcp
+    , text
+    , vector
+    , wai
+    , wai-extra
+  default-language: Haskell2010
